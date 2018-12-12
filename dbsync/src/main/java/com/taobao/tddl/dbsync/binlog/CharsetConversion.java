@@ -32,7 +32,7 @@ public final class CharsetConversion {
     }
 
     // Character set data used in lookups. The array will be sparse.
-    static final Entry[] entries = new Entry[0xff];
+    static final Entry[] entries = new Entry[500];
 
     static Entry getEntry(final int id) {
         if (id >= 0 && id < entries.length) {
@@ -114,11 +114,13 @@ public final class CharsetConversion {
         putEntry(53, "macroman", "macroman_bin", "MacRoman");
         putEntry(54, "utf16", "utf16_general_ci", "UTF-16");
         putEntry(55, "utf16", "utf16_bin", "UTF-16");
+        putEntry(56, "utf16le", "utf16le_general_ci", "UTF-16");
         putEntry(57, "cp1256", "cp1256_general_ci", "Cp1256");
         putEntry(58, "cp1257", "cp1257_bin", "Cp1257");
         putEntry(59, "cp1257", "cp1257_general_ci", "Cp1257");
         putEntry(60, "utf32", "utf32_general_ci", "UTF-32");
         putEntry(61, "utf32", "utf32_bin", "UTF-32");
+        putEntry(62, "utf16le", "utf16le_bin", "UTF-16");
         putEntry(63, "binary", "binary", "US-ASCII");
         putEntry(64, "armscii8", "armscii8_bin", "ISO8859_2");
         putEntry(65, "ascii", "ascii_bin", "US-ASCII");
@@ -132,6 +134,7 @@ public final class CharsetConversion {
         putEntry(73, "keybcs2", "keybcs2_bin", "Cp895");
         putEntry(74, "koi8r", "koi8r_bin", "KOI8_R");
         putEntry(75, "koi8u", "koi8u_bin", "KOI8_U");
+        putEntry(76, "utf8", "utf8_tolower_ci", "UTF-8");
         putEntry(77, "latin2", "latin2_bin", "ISO8859_2");
         putEntry(78, "latin5", "latin5_bin", "ISO8859_5");
         putEntry(79, "latin7", "latin7_bin", "ISO8859_7");
@@ -176,6 +179,10 @@ public final class CharsetConversion {
         putEntry(118, "utf16", "utf16_esperanto_ci", "UTF-16");
         putEntry(119, "utf16", "utf16_hungarian_ci", "UTF-16");
         putEntry(120, "utf16", "utf16_sinhala_ci", "UTF-16");
+        putEntry(121, "utf16", "utf16_german2_ci", "UTF-16");
+        putEntry(122, "utf16", "utf16_croatian_ci", "UTF-16");
+        putEntry(123, "utf16", "utf16_unicode_520_ci", "UTF-16");
+        putEntry(124, "utf16", "utf16_vietnamese_ci", "UTF-16");
 
         putEntry(128, "ucs2", "ucs2_unicode_ci", "UnicodeBig");
         putEntry(129, "ucs2", "ucs2_icelandic_ci", "UnicodeBig");
@@ -197,7 +204,11 @@ public final class CharsetConversion {
         putEntry(145, "ucs2", "ucs2_esperanto_ci", "UnicodeBig");
         putEntry(146, "ucs2", "ucs2_hungarian_ci", "UnicodeBig");
         putEntry(147, "ucs2", "ucs2_sinhala_ci", "UnicodeBig");
-
+        putEntry(148, "ucs2", "ucs2_german2_ci", "UnicodeBig");
+        putEntry(149, "ucs2", "ucs2_croatian_ci", "UnicodeBig");
+        putEntry(150, "ucs2", "ucs2_unicode_520_ci", "UnicodeBig");
+        putEntry(151, "ucs2", "ucs2_vietnamese_ci", "UnicodeBig");
+        putEntry(159, "ucs2", "ucs2_general_mysql500_ci", "UnicodeBig");
         putEntry(160, "utf32", "utf32_unicode_ci", "UTF-32");
         putEntry(161, "utf32", "utf32_icelandic_ci", "UTF-32");
         putEntry(162, "utf32", "utf32_latvian_ci", "UTF-32");
@@ -218,7 +229,10 @@ public final class CharsetConversion {
         putEntry(177, "utf32", "utf32_esperanto_ci", "UTF-32");
         putEntry(178, "utf32", "utf32_hungarian_ci", "UTF-32");
         putEntry(179, "utf32", "utf32_sinhala_ci", "UTF-32");
-
+        putEntry(180, "utf32", "utf32_german2_ci", "UTF-32");
+        putEntry(181, "utf32", "utf32_croatian_ci", "UTF-32");
+        putEntry(182, "utf32", "utf32_unicode_520_ci", "UTF-32");
+        putEntry(183, "utf32", "utf32_vietnamese_ci", "UTF-32");
         putEntry(192, "utf8", "utf8_unicode_ci", "UTF-8");
         putEntry(193, "utf8", "utf8_icelandic_ci", "UTF-8");
         putEntry(194, "utf8", "utf8_latvian_ci", "UTF-8");
@@ -239,7 +253,12 @@ public final class CharsetConversion {
         putEntry(209, "utf8", "utf8_esperanto_ci", "UTF-8");
         putEntry(210, "utf8", "utf8_hungarian_ci", "UTF-8");
         putEntry(211, "utf8", "utf8_sinhala_ci", "UTF-8");
+        putEntry(212, "utf8", "utf8_german2_ci", "UTF-8");
+        putEntry(213, "utf8", "utf8_croatian_ci", "UTF-8");
+        putEntry(214, "utf8", "utf8_unicode_520_ci", "UTF-8");
+        putEntry(215, "utf8", "utf8_vietnamese_ci", "UTF-8");
 
+        putEntry(223, "utf8", "utf8_general_mysql500_ci", "UTF-8");
         putEntry(224, "utf8mb4", "utf8mb4_unicode_ci", "UTF-8");
         putEntry(225, "utf8mb4", "utf8mb4_icelandic_ci", "UTF-8");
         putEntry(226, "utf8mb4", "utf8mb4_latvian_ci", "UTF-8");
@@ -260,9 +279,63 @@ public final class CharsetConversion {
         putEntry(241, "utf8mb4", "utf8mb4_esperanto_ci", "UTF-8");
         putEntry(242, "utf8mb4", "utf8mb4_hungarian_ci", "UTF-8");
         putEntry(243, "utf8mb4", "utf8mb4_sinhala_ci", "UTF-8");
+        putEntry(244, "utf8mb4", "utf8mb4_german2_ci", "UTF-8");
+        putEntry(245, "utf8mb4", "utf8mb4_croatian_ci", "UTF-8");
+        putEntry(246, "utf8mb4", "utf8mb4_unicode_520_ci", "UTF-8");
+        putEntry(247, "utf8mb4", "utf8mb4_vietnamese_ci", "UTF-8");
+        putEntry(248, "gb18030", "gb18030_chinese_ci", "UTF-8");
+        putEntry(249, "gb18030", "gb18030_bin", "UTF-8");
+        putEntry(250, "gb18030", "gb18030_unicode_520_ci", "UTF-8");
 
         putEntry(254, "utf8", "utf8_general_cs", "UTF-8");
-        putEntry(255, "utf8mb4", "utf8mb4_general_ci", "UTF-8");
+        putEntry(255, "utf8mb4", "utf8mb4_0900_ai_ci", "UTF-8");
+        putEntry(256, "utf8mb4", "utf8mb4_de_pb_0900_ai_ci", "UTF-8");
+        putEntry(257, "utf8mb4", "utf8mb4_is_0900_ai_ci", "UTF-8");
+        putEntry(258, "utf8mb4", "utf8mb4_lv_0900_ai_ci", "UTF-8");
+        putEntry(259, "utf8mb4", "utf8mb4_ro_0900_ai_ci", "UTF-8");
+        putEntry(260, "utf8mb4", "utf8mb4_sl_0900_ai_ci", "UTF-8");
+        putEntry(261, "utf8mb4", "utf8mb4_pl_0900_ai_ci", "UTF-8");
+        putEntry(262, "utf8mb4", "utf8mb4_et_0900_ai_ci", "UTF-8");
+        putEntry(263, "utf8mb4", "utf8mb4_es_0900_ai_ci", "UTF-8");
+        putEntry(264, "utf8mb4", "utf8mb4_sv_0900_ai_ci", "UTF-8");
+        putEntry(265, "utf8mb4", "utf8mb4_tr_0900_ai_ci", "UTF-8");
+        putEntry(266, "utf8mb4", "utf8mb4_cs_0900_ai_ci", "UTF-8");
+        putEntry(267, "utf8mb4", "utf8mb4_da_0900_ai_ci", "UTF-8");
+        putEntry(268, "utf8mb4", "utf8mb4_lt_0900_ai_ci", "UTF-8");
+        putEntry(269, "utf8mb4", "utf8mb4_sk_0900_ai_ci", "UTF-8");
+        putEntry(270, "utf8mb4", "utf8mb4_es_trad_0900_ai_ci", "UTF-8");
+        putEntry(271, "utf8mb4", "utf8mb4_la_0900_ai_ci", "UTF-8");
+        putEntry(273, "utf8mb4", "utf8mb4_eo_0900_ai_ci", "UTF-8");
+        putEntry(274, "utf8mb4", "utf8mb4_hu_0900_ai_ci", "UTF-8");
+        putEntry(275, "utf8mb4", "utf8mb4_hr_0900_ai_ci", "UTF-8");
+        putEntry(277, "utf8mb4", "utf8mb4_vi_0900_ai_ci", "UTF-8");
+        putEntry(278, "utf8mb4", "utf8mb4_0900_as_cs", "UTF-8");
+        putEntry(279, "utf8mb4", "utf8mb4_de_pb_0900_as_cs", "UTF-8");
+        putEntry(280, "utf8mb4", "utf8mb4_is_0900_as_cs", "UTF-8");
+        putEntry(281, "utf8mb4", "utf8mb4_lv_0900_as_cs", "UTF-8");
+        putEntry(282, "utf8mb4", "utf8mb4_ro_0900_as_cs", "UTF-8");
+        putEntry(283, "utf8mb4", "utf8mb4_sl_0900_as_cs", "UTF-8");
+        putEntry(284, "utf8mb4", "utf8mb4_pl_0900_as_cs", "UTF-8");
+        putEntry(285, "utf8mb4", "utf8mb4_et_0900_as_cs", "UTF-8");
+        putEntry(286, "utf8mb4", "utf8mb4_es_0900_as_cs", "UTF-8");
+        putEntry(287, "utf8mb4", "utf8mb4_sv_0900_as_cs", "UTF-8");
+        putEntry(288, "utf8mb4", "utf8mb4_tr_0900_as_cs", "UTF-8");
+        putEntry(289, "utf8mb4", "utf8mb4_cs_0900_as_cs", "UTF-8");
+        putEntry(290, "utf8mb4", "utf8mb4_da_0900_as_cs", "UTF-8");
+        putEntry(291, "utf8mb4", "utf8mb4_lt_0900_as_cs", "UTF-8");
+        putEntry(292, "utf8mb4", "utf8mb4_sk_0900_as_cs", "UTF-8");
+        putEntry(293, "utf8mb4", "utf8mb4_es_trad_0900_as_cs", "UTF-8");
+        putEntry(294, "utf8mb4", "utf8mb4_la_0900_as_cs", "UTF-8");
+        putEntry(296, "utf8mb4", "utf8mb4_eo_0900_as_cs", "UTF-8");
+        putEntry(297, "utf8mb4", "utf8mb4_hu_0900_as_cs", "UTF-8");
+        putEntry(298, "utf8mb4", "utf8mb4_hr_0900_as_cs", "UTF-8");
+        putEntry(300, "utf8mb4", "utf8mb4_vi_0900_as_cs", "UTF-8");
+        putEntry(303, "utf8mb4", "utf8mb4_ja_0900_as_cs", "UTF-8");
+        putEntry(304, "utf8mb4", "utf8mb4_ja_0900_as_cs_ks", "UTF-8");
+        putEntry(305, "utf8mb4", "utf8mb4_0900_as_ci", "UTF-8");
+        putEntry(306, "utf8mb4", "utf8mb4_ru_0900_ai_ci", "UTF-8");
+        putEntry(307, "utf8mb4", "utf8mb4_ru_0900_as_cs", "UTF-8");
+
     }
 
     /**
