@@ -14,11 +14,20 @@ case "`uname`" in
 esac
 BASE=${bin_abs_path}
 
-if [ "$1" == "base" ] ; then
+if [ "$1" = "base" ] ; then
     docker build --no-cache -t canal/osbase $BASE/base
-else 
-    rm -rf $BASE/canal.*.tar.gz ; 
+elif [ "$1" = "adapter" ] ; then
+    rm -rf $BASE/canal.*.tar.gz ;
+    cd $BASE/../ && mvn clean package -Dmaven.test.skip -Denv=release && cd $current_path/adapter ;
+    cp -r $BASE/image/ $current_path/adapter
+    cp $BASE/../target/canal.adapter-*.tar.gz $current_path/adapter
+    docker build --no-cache -t canal/canal-adapter $current_path/adapter
+    rm -f canal.adapter-*.tar.gz
+    rm -rf image
+else
+    rm -rf $BASE/canal.*.tar.gz ;
     cd $BASE/../ && mvn clean package -Dmaven.test.skip -Denv=release && cd $current_path ;
     cp $BASE/../target/canal.deployer-*.tar.gz $BASE/
     docker build --no-cache -t canal/canal-server $BASE/
+    rm -f canal.deployer-*.tar.gz
 fi

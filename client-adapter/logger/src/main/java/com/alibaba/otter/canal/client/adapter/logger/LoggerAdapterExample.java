@@ -36,7 +36,7 @@ public class LoggerAdapterExample implements OuterAdapter {
     }
 
     public void sync(Dml dml) {
-        logger.info("DML: {}", JSON.toJSONString(dml, SerializerFeature.WriteMapNullValue));
+        logger.info(JSON.toJSONString(dml, SerializerFeature.WriteMapNullValue));
     }
 
     @Override
