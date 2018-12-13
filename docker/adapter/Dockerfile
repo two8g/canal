@@ -13,11 +13,11 @@ RUN \
     cp -R /tmp/docker/admin/* /home/admin/  && \
     /bin/cp -f alidata/bin/lark-wait /usr/bin/lark-wait && \
 
-    mkdir -p /home/admin/canal-adapter && \
-    tar -xzvf /home/admin/canal.adapter-*.tar.gz -C /home/admin/canal-adapter && \
+    mkdir -p /home/admin/canal-server && \
+    tar -xzvf /home/admin/canal.adapter-*.tar.gz -C /home/admin/canal-server && \
     /bin/rm -f /home/admin/canal.adapter-*.tar.gz && \
 
-    mkdir -p home/admin/canal-adapter/logs  && \
+    mkdir -p home/admin/canal-server/logs  && \
     chmod +x /home/admin/*.sh  && \
     chmod +x /home/admin/bin/*.sh  && \
     chown admin: -R /home/admin && \
