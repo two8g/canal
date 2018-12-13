@@ -25,12 +25,12 @@ if [ "$1" = "adapter" ] ; then
     cd $current_path/adapter;
     cp -r $BASE/image/ $current_path/adapter
     cp $BASE/../target/canal.adapter-*.tar.gz $current_path/adapter
-    docker build --no-cache -t canal/canal-adapter $current_path/adapter
+    docker build -t canal/canal-adapter $current_path/adapter
     rm -f canal.adapter-*.tar.gz
     rm -rf image
 else
     cd $current_path;
     cp $BASE/../target/canal.deployer-*.tar.gz $BASE/
-    docker build --no-cache -t canal/canal-server $BASE/
+    docker build -t canal/canal-server $BASE/
     rm -f canal.deployer-*.tar.gz
 fi
