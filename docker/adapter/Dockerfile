@@ -27,7 +27,6 @@ RUN \
 # 8081
 EXPOSE 8081
 
-WORKDIR /home/admin
+WORKDIR /home/admin/canal-adapter
 
-ENTRYPOINT [ "/alidata/bin/main.sh" ]
-CMD [ "/home/admin/canal-adapter/bin/startup.sh" ]
+CMD [ "bin/startup.sh" ]
