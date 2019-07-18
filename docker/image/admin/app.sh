@@ -92,7 +92,7 @@ function start_canal() {
             fi
         fi 
     fi
-    su admin -c 'cd /home/admin/canal-server/bin/ && sh restart.sh 1>>/tmp/start.log 2>&1'
+    /bin/bash -c 'cd /home/admin/canal-server/bin/ && sh restart.sh 1>>/tmp/start.log 2>&1'
     sleep 5
     #check start
     checkStart "canal" "nc 127.0.0.1 $metricsPort -w 1 -z | wc -l" 30
@@ -100,7 +100,7 @@ function start_canal() {
 
 function stop_canal() {
     echo "stop canal"
-    su admin -c 'cd /home/admin/canal-server/bin/ && sh stop.sh 1>>/tmp/start.log 2>&1'
+    /bin/bash -c 'cd /home/admin/canal-server/bin/ && sh stop.sh 1>>/tmp/start.log 2>&1'
     echo "stop canal successful ..."
 }
 

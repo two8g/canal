@@ -2,12 +2,24 @@ FROM centos:centos6.10
 
 MAINTAINER agapple (jianghang115@gmail.com)
 
-env DOWNLOAD_LINK="http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.rpm"
+RUN yum install -y ca-certificates curl
+
+RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
+
+RUN curl -o /usr/local/bin/gosu -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64" \
+    && curl -o /usr/local/bin/gosu.asc -SL "https://github.com/tianon/gosu/releases/download/1.4/gosu-amd64.asc" \
+    && gpg --verify /usr/local/bin/gosu.asc \
+    && rm /usr/local/bin/gosu.asc \
+    && chmod +x /usr/local/bin/gosu
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+env DOWNLOAD_LINK="https://download.oracle.com/otn/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.rpm"
 # install system
 RUN \
     /bin/cp -f /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo 'root:Hello1234' | chpasswd && \
-    groupadd -r admin && useradd -g admin admin && \
+    groupadd -r admin && useradd -r -g admin admin && \
     yum install -y man && \
     yum install -y dstat && \
     yum install -y unzip && \
@@ -28,14 +40,7 @@ RUN \
     true
 
 RUN \
-    touch /var/lib/rpm/* && \ 
-    wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=xxx; oraclelicense=accept-securebackup-cookie" "$DOWNLOAD_LINK" -O /tmp/jdk-8-linux-x64.rpm && \
-    yum -y install /tmp/jdk-8-linux-x64.rpm && \
-    /bin/rm -f /tmp/jdk-8-linux-x64.rpm && \
+    yum install -y java-1.7.0-openjdk
 
-    echo "export JAVA_HOME=/usr/java/latest" >> /etc/profile && \
-    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile && \
-    yum clean all && \
-    true
-
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]
