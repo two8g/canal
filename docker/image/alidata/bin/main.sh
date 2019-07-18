@@ -19,10 +19,10 @@ if [ $? -eq 0 ]; then
     groupdel admin
 fi
 
-echo "Starting with UID : $USER_ID"
-useradd -u $USER_ID -o -c "" -m admin
 echo "Starting with GID : $GROUP_ID"
 groupadd -g $GROUP_ID -o admin
+echo "Starting with UID : $USER_ID"
+useradd -u $USER_ID -o -c "" -m admin -g admin
 export HOME=/home/admin
 chown -R admin:admin /home/admin
 
