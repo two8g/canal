@@ -31,6 +31,6 @@ if [ "$1" = "adapter" ] ; then
 else
     cd $current_path;
     cp $BASE/../target/canal.deployer-*.tar.gz $BASE/
-    docker build -t canal/canal-server $BASE/
+    docker build --no-cache -t canal/canal-server $BASE/
     rm -f canal.deployer-*.tar.gz
 fi
