@@ -21,7 +21,7 @@ fi
 
 echo "Starting with UID : $USER_ID"
 useradd -u $USER_ID -o -c "" -m admin
-echo "Starting with GID : GROUP_ID"
+echo "Starting with GID : $GROUP_ID"
 groupadd -g $GROUP_ID -o admin
 export HOME=/home/admin
 chown -R admin:admin /home/admin

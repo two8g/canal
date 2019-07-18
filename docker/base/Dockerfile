@@ -42,5 +42,4 @@ RUN \
 RUN \
     yum install -y java-1.7.0-openjdk
 
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["/bin/bash"]
