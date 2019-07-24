@@ -72,6 +72,8 @@ public class MemoryTableMeta implements TableMetaTSDB {
             }
 
             try {
+                // https://github.com/alibaba/canal/issues/1852 替换DDL
+                ddl = ddl.replaceAll("GENERATED ALWAYS AS .*? VIRTUAL", "");
                 // druid暂时flush privileges语法解析有问题
                 if (!StringUtils.startsWithIgnoreCase(StringUtils.trim(ddl), "flush")
                     && !StringUtils.startsWithIgnoreCase(StringUtils.trim(ddl), "grant")

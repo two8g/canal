@@ -151,6 +151,8 @@ public class DatabaseTableMeta implements TableMetaTSDB {
         // 首先记录到内存结构
         lock.writeLock().lock();
         try {
+            // https://github.com/alibaba/canal/issues/1852 替换DDL
+            ddl = ddl.replaceAll("GENERATED ALWAYS AS .*? VIRTUAL", "");
             if (memoryTableMeta.apply(position, schema, ddl, extra)) {
                 this.lastPosition = position;
                 this.hasNewDdl = true;

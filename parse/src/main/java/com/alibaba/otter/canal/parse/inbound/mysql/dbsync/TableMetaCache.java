@@ -171,8 +171,6 @@ public class TableMetaCache {
                     String createDDL = null;
                     if (packet.getFieldValues().size() > 0) {
                         createDDL = packet.getFieldValues().get(1);
-                        // https://github.com/alibaba/canal/issues/1852 替换DDL
-                        createDDL = createDDL.replaceAll("GENERATED ALWAYS AS .*? VIRTUAL", "");
                     }
                     // 强制覆盖掉内存值
                     tableMetaTSDB.apply(position, schema, createDDL, "first");
