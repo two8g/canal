@@ -225,7 +225,12 @@ public class MQMessageUtils {
                         List<CanalEntry.Column> columns;
 
                         if (eventType == CanalEntry.EventType.DELETE) {
-                            columns = rowData.getBeforeColumnsList();
+                            columns = new ArrayList<>();
+                            for (CanalEntry.Column column : rowData.getBeforeColumnsList()) {
+                                if (column.getIsKey()) {
+                                    columns.add(column);
+                                }
+                            }
                         } else {
                             columns = rowData.getAfterColumnsList();
                         }
