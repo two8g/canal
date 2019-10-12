@@ -283,9 +283,9 @@ public final class CharsetConversion {
         putEntry(245, "utf8mb4", "utf8mb4_croatian_ci", "UTF-8");
         putEntry(246, "utf8mb4", "utf8mb4_unicode_520_ci", "UTF-8");
         putEntry(247, "utf8mb4", "utf8mb4_vietnamese_ci", "UTF-8");
-        putEntry(248, "gb18030", "gb18030_chinese_ci", "UTF-8");
-        putEntry(249, "gb18030", "gb18030_bin", "UTF-8");
-        putEntry(250, "gb18030", "gb18030_unicode_520_ci", "UTF-8");
+        putEntry(248, "gb18030", "gb18030_chinese_ci", "GB18030");
+        putEntry(249, "gb18030", "gb18030_bin", "GB18030");
+        putEntry(250, "gb18030", "gb18030_unicode_520_ci", "GB18030");
 
         putEntry(254, "utf8", "utf8_general_cs", "UTF-8");
         putEntry(255, "utf8mb4", "utf8mb4_0900_ai_ci", "UTF-8");
